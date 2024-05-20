@@ -1,0 +1,72 @@
+@import 'reset';
+@import 'variables';
+@import 'mixins';
+
+%border {
+  border: 2px solid red;
+  color: blueviolet;
+  font-size: 22px;
+}
+
+.container {
+  @include container;
+  @include flex;
+
+  .box {
+    @include box;
+    @extend %border;
+    @include flex(center, center);
+  }
+
+  .box2 {
+    @include box($boxBgColor2);
+
+    &:hover {
+      background-color: $boxBgColor3;
+    }
+  }
+
+  .box3 {
+    @include box($boxBgColor3);
+  }
+}
+
+.container2 {
+  @include container($containerBgColor2);
+  @include flex(space-evenly, center);
+
+  .box {
+    @include box($boxBgColor2);
+    @extend %border;
+    @include flex(center, center);
+  }
+
+  .box2 {
+    @include box;
+  }
+
+  .box3 {
+    @include box($boxBgColor3);
+  }
+}
+
+.container3 {
+  @include container($containerBgColor1);
+  @include flex(center, center);
+
+  button {
+    @include button;
+  }
+
+  .delete {
+    @include button($dangerButton);
+  }
+
+  .reset {
+    @include button($secondaryButton);
+  }
+}
+
+.img {
+  @include img('../images/img.jpg');
+}
